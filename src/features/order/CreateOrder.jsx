@@ -100,7 +100,7 @@ export async function action({request}){
       if(!isValidPhone(order.phone))errors.phone = 'Please insect a valid phone number'
       if(Object.keys(errors).length >  0) return errors
 
-      //If no error create new order and redirect
+      //If no errors create new order and redirect
       
       const newOrder =  await createOrder(order)
 
