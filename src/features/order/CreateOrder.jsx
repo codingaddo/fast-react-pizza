@@ -82,7 +82,7 @@ function CreateOrder() {
         <input type="hidden" name="cart" value={JSON.stringify(cart)} />
 
         <div>
-          <Button disabled={isSubmitting} >{isSubmitting? 'Placing order':'Order now'}</Button>
+          <Button type={'primary'} disabled={isSubmitting} >{isSubmitting? 'Placing order':'Order now'}</Button>
         </div>
       </Form>
     </div>

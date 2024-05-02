@@ -10,7 +10,6 @@ const AppLayout = () => {
   return (
     <div className='grid h-screen grid-rows-[auto_1fr_auto]'>
         {isLoading && <Loader/>}
-        {true && <Loader/>}
         <Header/>
         <div className=' overflow-scroll'>
         <main className=' max-w-3xl mx-auto'>
