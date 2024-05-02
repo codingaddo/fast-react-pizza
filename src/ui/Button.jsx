@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Button = ({children, disabled, to, type}) => {
 
-  const base = "bg-yellow-500 text-stone-800 uppercase font-semibold inline-block rounded-full tracking-wide hover:bg-yellow-400 transition-colors duration-300 focus:outline-none focus:ring focus:ring-yellow-400 focus:bg-yellow-400 focus:ring-offset-1 disabled:cursor-not-allowed"
+  const base = "bg-yellow-500 text-stone-800 text-sm uppercase font-semibold inline-block rounded-full tracking-wide hover:bg-yellow-400 transition-colors duration-300 focus:outline-none focus:ring focus:ring-yellow-400 focus:bg-yellow-400 focus:ring-offset-1 disabled:cursor-not-allowed"
 
   const styles = {
     primary: base + ' px-6 py-3',
