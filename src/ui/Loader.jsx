@@ -2,7 +2,10 @@ import React from 'react'
 
 const Loader = () => {
   return (
-    <div className='loader'></div>
+    <div className='absolute bg-slate-200 inset-0'>
+      <div className='loader'></div>
+      
+    </div>
   )
 }
 
