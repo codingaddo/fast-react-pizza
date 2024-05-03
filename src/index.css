@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @layer components{
   .input{
     @apply rounded-full border  border-stone-300 px-4 py-1 transition-all duration-300 focus:outline-none focus:ring focus:ring-yellow-400;

@@ -12,7 +12,7 @@ const Button = ({children, disabled, to, type}) => {
   }
 
 if(to) return(
-  <Link to="/order/new" className={styles[type]}>Order pizzas</Link>
+  <Link to={to} className={styles[type]}>{children}</Link>
 
 )
 
