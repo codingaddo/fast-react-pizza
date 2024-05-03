@@ -8,7 +8,8 @@ const Button = ({children, disabled, to, type, onclick}) => {
   const styles = {
     primary: base + ' px-6 py-3',
     small: base + ' px-4 py-2 text-xs ',
-    secondary : base + ' bg-transparent border-2 border-stone-300  px-6 py-3 hover:bg-stone-400 hover:text-white focus:bg-stone-300 focus:ring-stone-200 '
+    secondary : base + ' bg-transparent border-2 border-stone-300  px-6 py-3 hover:bg-stone-400 hover:text-white focus:bg-stone-300 focus:ring-stone-200 ',
+    round:base + ' px-2.5 py-1 text-sm ',
   }
 
 if(to) return(
