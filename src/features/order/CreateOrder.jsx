@@ -52,8 +52,8 @@ function CreateOrder() {
   const totalCartPrice = useSelector(getTotalCartPrice())
   const priorityPrice = withPriority ? totalCartPrice * 0.2 : 0
   const totalPrice = totalCartPrice + priorityPrice
-  const {username,status:addressStatus, position, address} = useSelector(state=>state.user)
-  const isLoadingAdrees = addressStatus === 'loading'
+  const {username,status:addressStatus, position, address, error:errorAddress} = useSelector(state=>state.user)
+  const isLoadingAdres = addressStatus === 'loading'
 
   if(!cart.length) return <EmptyCart/>
 
@@ -78,13 +78,15 @@ function CreateOrder() {
         <div className=" mb-5 flex flex-col gap-2 sm:flex-row sm:items-center relative">
           <label className="sm:basis-40">Address</label>
           <div className="w-full">
-            <input type="text" defaultValue={address} name="address" disabled={isLoadingAdrees} required className="input  w-full" />
+            <input type="text" defaultValue={address} name="address" disabled={isLoadingAdres} required className="input  w-full" />
+
+            {addressStatus === 'error' && <p className="text-red-700 text-xs bg-red-100 rounded-md p-2 mt-2">{errorAddress}</p>}
           </div>
           { !position.longitude && !position.latitude &&
-          <div className=" absolute right-[3px] z-50">
+          <div className=" absolute right-[3px] z-40 ">
             <Button type={'small'}
-            disabled={isLoadingAdrees}
-             onClick={(e)=>{
+            disabled={isLoadingAdres}
+             onclick={(e)=>{
               e.preventDefault()
               dispatch(fetchAddress())
             }}>Get Position</Button>
@@ -105,11 +107,13 @@ function CreateOrder() {
         </div>
 
         <input type="hidden" name="cart" value={JSON.stringify(cart)} />
+        <input type="hidden" name="Position" value={ position.longitude && position.latitude? `${position.longitude}, ${position.latitude}, Address: ${address} `:''} />
 
         <div>
-          <Button type={'primary'} disabled={isSubmitting || isLoadingAdrees} >{isSubmitting? 'Placing order':`Order now ${formatCurrency(totalPrice)}`}</Button>
+          <Button type={'primary'} disabled={isSubmitting || isLoadingAdres} >{isSubmitting? 'Placing order':`Order now ${formatCurrency(totalPrice)}`}</Button>
         </div>
       </Form>
+
     </div>
   );
 }
@@ -122,7 +126,7 @@ export async function action({request}){
          cart: JSON.parse(data.cart),
          priority : data.priority === 'true',
       }
-
+console.log(order)
       const errors = {}
       if(!isValidPhone(order.phone))errors.phone = 'Please insect a valid phone number'
       if(Object.keys(errors).length >  0) return errors
