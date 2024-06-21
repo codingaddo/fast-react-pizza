@@ -3,7 +3,8 @@ import Button from "../../ui/Button";
 import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart } from "./cartSlice";
-import EmptyCart from "./emptyCart";
+// import EmptyCart from "./emptyCart";
+// import EmptyCart from "./emptyCart";
 
 // const fakeCart = [
 //   {
@@ -38,7 +39,15 @@ function Cart() {
     dispatch(clearCart());
   };
 
-  if (!cart.length) return <EmptyCart />;
+  if (!cart.length)
+    return (
+      <div className="px-4 py-3">
+        <LinkButton to="/menu">&larr; Back to menu</LinkButton>
+        <p className=" font-semibold mt-7">
+          Your cart is still empty. Start adding some pizzas :
+        </p>
+      </div>
+    );
   return (
     <div className=" px-4 py-3">
       <LinkButton to="/menu">&larr; Back to menu</LinkButton>
